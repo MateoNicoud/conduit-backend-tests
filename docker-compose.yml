@@ -1,0 +1,14 @@
+services:
+  laravel-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - "8000:8000"
+    container_name: laravel-app
+    restart: unless-stopped
+    develop:
+      watch:
+        - action: sync+restart
+          path: .
+          target: /var/www/html/
